@@ -1,0 +1,6 @@
+body{
+  font-family: 'Open Sans', sans-serif;
+  color:#F4F4F6;
+  background: #282030 url(../background.png) center center no-repeat;
+  background-size: cover;
+}
