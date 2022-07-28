@@ -8,12 +8,18 @@
           v-for="artists in artistsList"
           :key="artists.id"
         >
-          {{ artists.name }} - {{ artists.type }}
-          <figure v-for="(image, index) in artists.images" :key="index">
+          {{ artists.name }} - {{}}
+          <figure>
             <img
+              v-if="artists?.images[0]?.url === undefined"
               class="cover"
-              v-if="index === 1"
-              :src="image.url"
+              src="https://via.placeholder.com/320"
+              :alt="artists.name"
+            />
+            <img
+              v-else
+              class="cover"
+              :src="artists?.images[0]?.url"
               :alt="artists.name"
             />
           </figure>
@@ -32,16 +38,10 @@ export default {
       artistsList: [],
     };
   },
-  methods: {
-    getGenre: function (arr) {
-      return arr[1];
-    },
-  },
   mounted() {
     (async () => {
       const data = await searchItems(this.$store.state.favoriteArtist);
       this.artistsList = data.artists.items;
-      console.log(data.artists.items[0]);
     })();
   },
 };

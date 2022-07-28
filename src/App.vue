@@ -28,9 +28,4 @@ export default {
 };
 </script>
 
-<style>
-#app {
-  position: fixed;
-  width: 100%;
-}
-</style>
+<style></style>

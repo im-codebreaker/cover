@@ -1,8 +1,17 @@
+::-webkit-scrollbar {
+  width: 8px;
+  background-color: #282030;
+}
+::-webkit-scrollbar-thumb {
+  background: #6f4599;
+}
+
 body{
+
   font-family: 'Open Sans', sans-serif;
   color:#F4F4F6;
-  background: #282030 url(../background.png) center center no-repeat;
-  background-size: cover;
+  background: #282030 url(../background.png) center center fixed no-repeat;
+  
 }
 ul,
 ol{
