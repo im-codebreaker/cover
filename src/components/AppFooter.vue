@@ -1,16 +1,12 @@
 <template>
-  <header class="header">
-    <h1 class="logo">_Cover</h1>
-    <div class="header_profile">
-      <img class="avatar" src="../assets/avatar.png" />
-      <p>{{ $store.state.username }} 👋</p>
-    </div>
-  </header>
+  <footer class="footer">
+    <p>_Cover - Design by CodeBreaker</p>
+  </footer>
 </template>
 
 <script>
 export default {
-  name: 'AppHeader',
+  name: 'AppFooter',
 };
 </script>
 

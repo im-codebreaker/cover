@@ -4,3 +4,11 @@ body{
   background: #282030 url(../background.png) center center no-repeat;
   background-size: cover;
 }
+ul,
+ol{
+  list-style: none;
+}
+a{
+  cursor: pointer;
+  text-decoration: none;
+}

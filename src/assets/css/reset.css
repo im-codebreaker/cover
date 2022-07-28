@@ -17,6 +17,7 @@ body {
 
 img, picture, video, canvas, svg {
   display: block;
+  margin: auto;
   max-width: 100%;
 }
 
