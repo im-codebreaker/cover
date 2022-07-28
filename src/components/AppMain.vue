@@ -8,31 +8,54 @@
           engine to display Albums and Top Tracks</p
         >
       </div>
-      <button @click="filterByFollower">Most followed</button>
-      <button @click="filterByPopularity">Most Popular</button>
-      <ul class="search__list">
-        <li
-          class="search__list-item"
-          v-for="artists in artistsList"
-          :key="artists.id"
-        >
-          <h2 class="list__item-title">{{ artists.name }} </h2>
-          <figure class="list__item-image">
-            <img
-              v-if="artists?.images[0]?.url === undefined"
-              class="cover"
-              src="https://via.placeholder.com/320"
-              :alt="artists.name"
+      <div class="result__container">
+        <div class="result__topbar">
+          <div class="result__topbar-search">
+            <input
+              type="text"
+              placeholder="Search for an Artist"
+              :value="inputSearch"
+              @input="(event) => (inputSearch = event.target.value)"
             />
-            <img
-              v-else
-              class="cover"
-              :src="artists?.images[0]?.url"
-              :alt="artists.name"
-            />
-          </figure>
-        </li>
-      </ul>
+            <button class="btn" @click="fetchArtist"
+              ><i class="ri-search-2-line"></i> Search</button
+            >
+          </div>
+
+          <div class="result__topbar-filter">
+            <button class="btn" @click="filterByFollower"
+              ><i class="ri-user-fill"></i>Most followed</button
+            >
+            <button class="btn" @click="filterByPopularity">
+              <i class="ri-star-fill"></i> Most Popular</button
+            >
+          </div>
+        </div>
+
+        <ul class="result__list">
+          <li
+            class="result__list-item"
+            v-for="artists in artistsList"
+            :key="artists.id"
+          >
+            <h2 class="list__item-title">{{ artists.name }} </h2>
+            <figure class="list__item-image">
+              <img
+                v-if="artists?.images[0]?.url === undefined"
+                class="cover"
+                src="https://via.placeholder.com/320"
+                :alt="artists.name"
+              />
+              <img
+                v-else
+                class="cover"
+                :src="artists?.images[0]?.url"
+                :alt="artists.name"
+              />
+            </figure>
+          </li>
+        </ul>
+      </div>
     </section>
   </main>
 </template>
@@ -44,9 +67,20 @@ export default {
   data() {
     return {
       artistsList: [],
+      inputSearch: '',
     };
   },
   methods: {
+    fetchArtist() {
+      if (this.inputSearch === '') {
+        alert('Please enter an artist name before submit');
+      } else {
+        (async () => {
+          const data = await searchItems(this.inputSearch);
+          this.artistsList = data.artists.items;
+        })();
+      }
+    },
     filterByFollower() {
       this.artistsList = this.artistsList.sort(function (a, b) {
         return b.followers.total - a.followers.total;
@@ -69,6 +103,7 @@ export default {
 
 <style>
 .container {
+  width: 90%;
   margin: auto;
   max-width: 1320px;
 }
@@ -80,11 +115,18 @@ export default {
   background-color: #12121228;
   border-radius: 8px;
 }
-.search__list {
+.result__container {
+  margin: 120px 0 240px 0;
+}
+.result__topbar {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.result__list {
   display: grid;
   grid-template-columns: 1fr;
   gap: 10px;
-  margin: 120px 0 240px 0;
 }
 .list__item-title {
   font-size: 16px;
@@ -100,18 +142,57 @@ export default {
   transform: scale(1.05);
   transition: transform 500ms ease-out;
 }
+.result__topbar-search,
+.result__topbar-filter {
+  display: flex;
+  gap: 16px;
+}
+.result__topbar-search input {
+  caret-color: #fff;
+  padding-left: 16px;
+  border: 1px solid #fff;
+  border-radius: 100px;
+  color: #fff;
+  background-color: transparent;
+}
+.result__topbar-search input::placeholder {
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.685);
+}
+.result__topbar-search input .result__topbar-filter:first-child {
+  margin-right: 16px;
+}
 .cover {
-  width: 240px;
-  height: 240px;
   border-radius: 8px;
 }
-@media screen and (min-width: 64em) {
-  .search__list {
-    grid-template-columns: 1fr 1fr 1fr 1fr;
+.btn {
+  cursor: pointer;
+  padding: 4px 16px;
+  border-radius: 100px;
+  color: #f4f4f6;
+  border: 1px solid #f4f4f6bb;
+  outline-color: #f4f4f6;
+  background-color: #f4f4f681;
+}
+.btn:hover {
+  background-color: #f4f4f6a8;
+}
+.btn i {
+  margin-right: 8px;
+}
+@media screen and (min-width: 40em) {
+  .result__list {
+    grid-template-columns: 1fr 1fr;
   }
-  .cover {
-    width: 320px;
-    height: 320px;
+}
+@media screen and (min-width: 57.5em) {
+  .result__list {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}
+@media screen and (min-width: 64em) {
+  .result__list {
+    grid-template-columns: 1fr 1fr 1fr 1fr;
   }
 }
 </style>
