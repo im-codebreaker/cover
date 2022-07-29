@@ -1,6 +1,6 @@
 <template>
   <main class="main">
-    <section class="container">
+    <section class="section__result container">
       <div class="hello">
         <h1>Welcome on _Cover</h1>
         <p
@@ -17,18 +17,20 @@
               :value="inputSearch"
               @input="(event) => (inputSearch = event.target.value)"
             />
-            <button class="btn" @click="fetchArtist"
-              ><i class="ri-search-2-line"></i> Search</button
-            >
+            <CoverButton @click="fetchArtist" icon="search-2" text="Search" />
           </div>
 
           <div class="result__topbar-filter">
-            <button class="btn" @click="filterByFollower"
-              ><i class="ri-user-fill"></i>Most followed</button
-            >
-            <button class="btn" @click="filterByPopularity">
-              <i class="ri-star-fill"></i> Most Popular</button
-            >
+            <CoverButton
+              @click="filterByFollower"
+              icon="user"
+              text="Most Followed"
+            />
+            <CoverButton
+              @click="filterByPopularity"
+              icon="star"
+              text="Most Popular"
+            />
           </div>
         </div>
 
@@ -64,8 +66,11 @@
 
 <script>
 import { searchItems } from '@/utils';
+import CoverButton from './ui/CoverButton.vue';
+
 export default {
   name: 'AppMain',
+  components: { CoverButton },
   data() {
     return {
       artistsList: [],
@@ -166,21 +171,6 @@ export default {
 }
 .cover {
   border-radius: 8px;
-}
-.btn {
-  cursor: pointer;
-  padding: 4px 16px;
-  border-radius: 100px;
-  color: #f4f4f6;
-  border: 1px solid #f4f4f6bb;
-  outline-color: #f4f4f6;
-  background-color: #f4f4f681;
-}
-.btn:hover {
-  background-color: #f4f4f6a8;
-}
-.btn i {
-  margin-right: 8px;
 }
 @media screen and (min-width: 40em) {
   .result__list {
