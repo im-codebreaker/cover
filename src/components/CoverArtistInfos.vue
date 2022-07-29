@@ -18,7 +18,7 @@
 
 <script>
 export default {
-  name: 'AristInfos',
+  name: 'CoverAristInfos',
   props: ['artistInfos'],
 };
 </script>

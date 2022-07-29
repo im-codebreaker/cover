@@ -1,11 +1,11 @@
 import { createRouter, createWebHistory } from 'vue-router';
 
-import AppHome from '../components/AppMain.vue';
-import ArtistView from '../components/ArtistView.vue';
+import CoverHome from '../views/CoverHome.vue';
+import CoverSingleArtist from '../views/CoverSingleArtist.vue';
 
 const routes = [
-  { path: '/', component: AppHome },
-  { path: '/:id', component: ArtistView },
+  { path: '/', component: CoverHome },
+  { path: '/:id', component: CoverSingleArtist },
 ];
 
 const router = createRouter({

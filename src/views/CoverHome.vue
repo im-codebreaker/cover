@@ -9,56 +9,12 @@
         >
       </div>
       <div class="result__container">
-        <div class="result__topbar">
-          <div class="result__topbar-search">
-            <input
-              type="text"
-              placeholder="Search for an Artist"
-              :value="inputSearch"
-              @input="(event) => (inputSearch = event.target.value)"
-            />
-            <CoverButton @click="fetchArtist" icon="search-2" text="Search" />
-          </div>
-
-          <div class="result__topbar-filter">
-            <CoverButton
-              @click="filterByFollower"
-              icon="user"
-              text="Most Followed"
-            />
-            <CoverButton
-              @click="filterByPopularity"
-              icon="star"
-              text="Most Popular"
-            />
-          </div>
-        </div>
-
-        <ul class="result__list">
-          <li
-            class="result__list-item"
-            v-for="artists in artistsList"
-            :key="artists.id"
-          >
-            <h2 class="list__item-title">{{ artists.name }} </h2>
-            <router-link :to="artists.id">
-              <figure class="list__item-image">
-                <img
-                  v-if="artists?.images[0]?.url === undefined"
-                  class="cover"
-                  src="https://via.placeholder.com/320"
-                  :alt="artists.name"
-                />
-                <img
-                  v-else
-                  class="cover"
-                  :src="artists?.images[0]?.url"
-                  :alt="artists.name"
-                />
-              </figure>
-            </router-link>
-          </li>
-        </ul>
+        <CoverSearchBar
+          :fetch-artist="fetchArtist"
+          :filter-by-follower="filterByFollower"
+          :filter-by-popularity="filterByPopularity"
+        />
+        <CoverSearchList :artists-list="artistsList" />
       </div>
     </section>
   </main>
@@ -66,24 +22,24 @@
 
 <script>
 import { searchItems } from '@/utils';
-import CoverButton from './ui/CoverButton.vue';
+import CoverSearchBar from '@/components/CoverSearchBar.vue';
+import CoverSearchList from '@/components/CoverSearchList.vue';
 
 export default {
-  name: 'AppMain',
-  components: { CoverButton },
+  name: 'CoverHome',
+  components: { CoverSearchBar, CoverSearchList },
   data() {
     return {
       artistsList: [],
-      inputSearch: '',
     };
   },
   methods: {
-    fetchArtist() {
-      if (this.inputSearch === '') {
+    fetchArtist(name) {
+      if (name === '') {
         alert('Please enter an artist name before submit');
       } else {
         (async () => {
-          const data = await searchItems(this.inputSearch);
+          const data = await searchItems(name);
           this.artistsList = data.artists.items;
         })();
       }
@@ -99,11 +55,9 @@ export default {
       });
     },
   },
-  mounted() {
-    (async () => {
-      const data = await searchItems(this.$store.state.favoriteArtist);
-      this.artistsList = data.artists.items;
-    })();
+  async mounted() {
+    const data = await searchItems(this.$store.state.favoriteArtist);
+    this.artistsList = data.artists.items;
   },
 };
 </script>

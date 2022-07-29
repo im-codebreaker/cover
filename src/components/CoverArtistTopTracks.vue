@@ -1,6 +1,6 @@
 <template>
   <ul>
-    <li v-for="(track, index) in artistTopTracks" :key="index">
+    <li v-for="(track, index) in artistTopTracks?.tracks" :key="index">
       {{ track.name }} - {{ track.duration_ms }} ms
       {{ track.album?.name }}
       <div v-for="(artist, index) in track.artists" :key="index">
@@ -12,8 +12,8 @@
 
 <script>
 export default {
-  name: 'ArtistTopTracks',
-  props: ['artistTracks'],
+  name: 'CoverArtistTopTracks',
+  props: ['artistTopTracks'],
 };
 </script>
 
