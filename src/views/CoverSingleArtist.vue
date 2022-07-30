@@ -1,9 +1,11 @@
 <template>
   <main class="main">
+    <aside>
+      <CoverButtonLink href="/" icon="arrow-go-back" size="small"
+        >Go back</CoverButtonLink
+      >
+    </aside>
     <section class="section__artist container">
-      <div>
-        <CoverButtonLink href="/" icon="arrow-go-back" text="Go back" />
-      </div>
       <CoverArtistInfos :artist-infos="artistInfos" />
       <CoverArtistAlbums :artist-albums="artistAlbums" />
       <CoverArtistTopTracks :artist-top-tracks="artistTopTracks" />

@@ -1,5 +1,16 @@
+function formatTimeDisplay(time) {
+  return time < 10 ? `0${time}` : time;
+}
+
+function millisecondsToMinutesAndSeconds(milliseconds) {
+  const minutes = Math.floor(milliseconds / 60000);
+  const seconds = Math.floor((milliseconds % 60000) / 1000);
+
+  return formatTimeDisplay(minutes) + ':' + formatTimeDisplay(seconds);
+}
+
 async function searchItems(name) {
-  const token = localStorage.getItem('accessToken');
+  const token = sessionStorage.getItem('accessToken');
   const response = await fetch(
     `https://api.spotify.com/v1/search?q=${name}&type=artist`,
     {
@@ -14,7 +25,7 @@ async function searchItems(name) {
 }
 
 async function getArtist(id) {
-  const token = localStorage.getItem('accessToken');
+  const token = sessionStorage.getItem('accessToken');
   const response = await fetch(`https://api.spotify.com/v1/artists/${id}`, {
     headers: {
       Authorization: 'Bearer ' + token,
@@ -25,7 +36,7 @@ async function getArtist(id) {
 }
 
 async function getAlbums(id) {
-  const token = localStorage.getItem('accessToken');
+  const token = sessionStorage.getItem('accessToken');
   const response = await fetch(
     `https://api.spotify.com/v1/artists/${id}/albums`,
     {
@@ -39,7 +50,7 @@ async function getAlbums(id) {
 }
 
 async function getTopTracks(id) {
-  const token = localStorage.getItem('accessToken');
+  const token = sessionStorage.getItem('accessToken');
   const response = await fetch(
     `https://api.spotify.com/v1/artists/${id}/top-tracks?country=FR`,
     {
@@ -52,4 +63,10 @@ async function getTopTracks(id) {
   return await response.json();
 }
 
-export { searchItems, getArtist, getAlbums, getTopTracks };
+export {
+  millisecondsToMinutesAndSeconds,
+  searchItems,
+  getArtist,
+  getAlbums,
+  getTopTracks,
+};

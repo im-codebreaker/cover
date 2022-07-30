@@ -1,3 +1,10 @@
+:root{
+  --border-radius: 8px;
+  --border-rounded: 100px;
+  --spotify-green: #1DB954;
+  --spotify-white: #fff;
+  --spotify-black: #191414;
+}
 ::-webkit-scrollbar {
   width: 8px;
   background-color: #282030;
@@ -5,7 +12,6 @@
 ::-webkit-scrollbar-thumb {
   background: #6f4599;
 }
-
 body{
   font-family: 'Open Sans', sans-serif;
   color:#F4F4F6;

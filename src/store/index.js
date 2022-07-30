@@ -5,6 +5,7 @@ const store = createStore({
     return {
       username: 'John Doe',
       favoriteArtist: 'The Weeknd',
+      accessToken: sessionStorage.getItem('accessToken'),
     };
   },
 });

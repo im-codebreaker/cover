@@ -7,30 +7,33 @@
         :value="inputSearch"
         @input="(event) => (inputSearch = event.target.value)"
       />
-      <CoverButton
-        @click="fetchArtist(inputSearch)"
-        icon="search-2"
-        text="Search"
-      />
+      <CoverButtonIcon @click="fetchArtist(inputSearch)" icon="search-2"
+        >Search</CoverButtonIcon
+      >
     </div>
 
     <div class="result__topbar-filter">
-      <CoverButton @click="filterByFollower" icon="user" text="Most Followed" />
-      <CoverButton
+      <CoverButtonIcon @click="filterByFollower" icon="user" type="fill">
+        Most Followed
+      </CoverButtonIcon>
+      <CoverButtonIcon
         @click="filterByPopularity"
         icon="star"
-        text="Most Popular"
-      />
+        className="yolo"
+        type="fill"
+      >
+        Most Popular
+      </CoverButtonIcon>
     </div>
   </div>
 </template>
 
 <script>
-import CoverButton from './ui/CoverButton.vue';
+import CoverButtonIcon from './ui/CoverButtonIcon.vue';
 export default {
   name: 'CoverSearchBar',
   components: {
-    CoverButton,
+    CoverButtonIcon,
   },
   data() {
     return {
@@ -51,4 +54,18 @@ export default {
 };
 </script>
 
-<style></style>
+<style>
+.result__topbar,
+.result__topbar-search,
+.result__topbar-filter {
+  display: flex;
+}
+.result__topbar {
+  flex-direction: column;
+  gap: 1rem;
+}
+.result__topbar-search,
+.result__topbar-filter {
+  justify-content: space-between;
+}
+</style>

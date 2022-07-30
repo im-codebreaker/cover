@@ -79,11 +79,6 @@ export default {
 .result__container {
   margin: 120px 0 240px 0;
 }
-.result__topbar {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-}
 .result__list {
   display: grid;
   grid-template-columns: 1fr;

@@ -15,12 +15,10 @@ export default {
     CoverHeader,
     CoverFooter,
   },
-  mounted() {
-    if (localStorage.getItem('accessToken') === null) {
-      (async () => {
-        const token = await getAccessToken();
-        localStorage.setItem('accessToken', token.access_token);
-      })();
+  async mounted() {
+    if (sessionStorage.getItem('accessToken') === null) {
+      const token = await getAccessToken();
+      sessionStorage.setItem('accessToken', token.access_token);
     }
   },
 };

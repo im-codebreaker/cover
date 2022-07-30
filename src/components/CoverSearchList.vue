@@ -36,4 +36,8 @@ export default {
   },
 };
 </script>
-<style></style>
+<style>
+.result__list {
+  margin-block: 6.25rem;
+}
+</style>
