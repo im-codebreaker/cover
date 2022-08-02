@@ -1,32 +1,34 @@
 <template>
-  <li
-    class="track__list-item"
-    v-for="(track, index) in artistTopTracks?.tracks"
-    :key="index"
-  >
-    <img :src="track.album?.images[1].url" :alt="track.album?.name" />
+  <li class="track__list-item">
+    <img
+      class="cover"
+      :src="track.album?.images[0].url"
+      :alt="track.album?.name"
+    />
     <div class="list__item-details">
-      <h3>{{ track.name }}</h3>
-      <div class="item__details-artists">
-        <span v-for="(artist, index) in track.artists" :key="index">
-          {{ artist.name }}
-        </span>
+      <div class="item__details-wrapper">
+        <h3>{{ track.name }}</h3>
+        <div class="item__details-artists">
+          <span v-for="(artist, index) in track.artists" :key="index">
+            {{ artist.name }}&nbsp;
+          </span>
+        </div>
+        <div class="item__details-track">
+          <span
+            ><i class="ri-time-line"></i>
+            {{ formatTrackTime(track.duration_ms) }}</span
+          >
+          <span><i class="ri-album-line"></i> {{ track.album?.name }}</span>
+        </div>
       </div>
-      <div class="item__details-track">
-        <span
-          ><i class="ri-time-line"></i>
-          {{ formatTrackTime(track.duration_ms) }}</span
-        >
-        <span><i class="ri-album-line"></i> {{ track.album?.name }}</span>
-      </div>
-      <div class="item__details-link">
+      <div class="list__item-link">
         <CoverButtonLink
           :href="track.external_urls.spotify"
           icon="spotify"
           className="btn-spotify"
           external
         >
-          Listen on spotify
+          Play on spotify
         </CoverButtonLink>
       </div>
     </div>
@@ -38,44 +40,39 @@ import CoverButtonLink from './ui/CoverButtonLink.vue';
 
 export default {
   name: 'CoverTrackItem',
-  props: ['artistTopTracks'],
+  components: {
+    CoverButtonLink,
+  },
+  props: {
+    track: {
+      type: Object,
+      required: true,
+    },
+  },
   methods: {
     formatTrackTime: function (duration) {
       return millisecondsToMinutesAndSeconds(duration);
     },
   },
-  components: { CoverButtonLink },
 };
 </script>
 <style>
 .track__list-item {
   display: flex;
   flex-direction: column;
-  gap: 1rem;
-  padding: 2rem;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 1rem;
+  border-radius: var(--border-radius);
   background-color: rgba(0, 0, 0, 0.25);
-  border-radius: 8px;
-}
-.track__list-item img {
-  flex: 1;
-  border-radius: 50%;
 }
 .list__item-details {
+  display: flex;
+  flex-direction: column;
   gap: 1rem;
 }
-.list__item-details h2 {
-  font-size: 1rem;
-}
 .item__details-artists {
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-end;
-  gap: 0.5rem;
   font-style: italic;
-}
-.item__details-artists,
-.item__details-track {
-  font-size: 0.875rem;
 }
 .item__details-track {
   display: flex;
@@ -84,13 +81,26 @@ export default {
 }
 .btn-spotify {
   display: block;
+  width: 100%;
   text-align: center;
-  padding: 1rem 0;
-  border-radius: 100px;
-  color: var(--spotify-white);
   background-color: var(--spotify-black);
 }
-.btn-spotify:hover {
-  border: 1px solid var(--spotify-green);
+@media screen and (min-width: 64em) {
+  .track__list-item {
+    flex-direction: row;
+  }
+  .track__list-item .cover {
+    width: 64px;
+  }
+  .list__item-details {
+    flex: 1;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .item__details-track > span {
+    margin-right: 10rem;
+  }
 }
 </style>

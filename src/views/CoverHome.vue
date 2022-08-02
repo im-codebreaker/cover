@@ -34,14 +34,13 @@ export default {
     };
   },
   methods: {
-    fetchArtist(name) {
+    async fetchArtist(name) {
       if (name === '') {
         alert('Please enter an artist name before submit');
       } else {
-        (async () => {
-          const data = await searchItems(name);
-          this.artistsList = data.artists.items;
-        })();
+        const data = await searchItems(name);
+        this.artistsList = data.artists.items;
+        this.$store.dispatch('setCurrentSearch', name);
       }
     },
     filterByFollower() {
@@ -56,7 +55,8 @@ export default {
     },
   },
   async mounted() {
-    const data = await searchItems(this.$store.state.favoriteArtist);
+    const currentSearch = this.$store.getters.getCurrentSearch;
+    const data = await searchItems(currentSearch);
     this.artistsList = data.artists.items;
   },
 };
@@ -75,65 +75,5 @@ export default {
   padding: 40px;
   background-color: #12121228;
   border-radius: 8px;
-}
-.result__container {
-  margin: 120px 0 240px 0;
-}
-.result__list {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 10px;
-}
-.list__item-title {
-  font-size: 16px;
-}
-.list__item-image {
-  overflow: hidden;
-  border-radius: 8px;
-}
-.list__item-image img {
-  transition: transform 500ms ease-out;
-}
-.list__item-image:hover img {
-  transform: scale(1.05);
-  transition: transform 500ms ease-out;
-}
-.result__topbar-search,
-.result__topbar-filter {
-  display: flex;
-  gap: 16px;
-}
-.result__topbar-search input {
-  caret-color: #fff;
-  padding-left: 16px;
-  border: 1px solid #fff;
-  border-radius: 100px;
-  color: #fff;
-  background-color: transparent;
-}
-.result__topbar-search input::placeholder {
-  font-size: 12px;
-  color: rgba(255, 255, 255, 0.685);
-}
-.result__topbar-search input .result__topbar-filter:first-child {
-  margin-right: 16px;
-}
-.cover {
-  border-radius: 8px;
-}
-@media screen and (min-width: 40em) {
-  .result__list {
-    grid-template-columns: 1fr 1fr;
-  }
-}
-@media screen and (min-width: 57.5em) {
-  .result__list {
-    grid-template-columns: 1fr 1fr 1fr;
-  }
-}
-@media screen and (min-width: 64em) {
-  .result__list {
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-  }
 }
 </style>

@@ -42,3 +42,21 @@ export default {
   },
 };
 </script>
+
+<style>
+.list__item-title {
+  font-weight: 600;
+}
+.list__item-details {
+  font-size: 0.75rem;
+}
+@media screen and (min-width: 64em) {
+  .section__artist {
+    display: grid;
+    grid-template-areas:
+      'infos tracks'
+      'albums albums';
+    gap: 40px;
+  }
+}
+</style>

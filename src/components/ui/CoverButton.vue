@@ -36,7 +36,7 @@ export default {
 <style>
 .btn {
   cursor: pointer;
-  padding: 4px 16px;
+  padding: 0.25rem 1rem;
   border-radius: 100px;
   color: #f4f4f6;
   border: 1px solid #f4f4f6bb;

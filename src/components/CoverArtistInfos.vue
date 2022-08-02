@@ -12,7 +12,11 @@
       </CoverTags>
     </div>
     <div class="artist__infos-image" v-if="artistInfos.images">
-      <img :src="artistInfos?.images[0]?.url" :alt="artistInfos.name" />
+      <img
+        class="cover"
+        :src="artistInfos?.images[0]?.url"
+        :alt="artistInfos.name"
+      />
     </div>
     <ul class="artist__infos-genre" v-if="artistInfos.genres">
       <li v-for="(genre, index) in artistInfos.genres" :key="index">
@@ -51,9 +55,6 @@ export default {
   border: 1px dashed rgba(255, 255, 255, 0.555);
   border-radius: var(--border-radius);
 }
-.artist__infos-image img {
-  border-radius: var(--border-radius);
-}
 .list__header.infos {
   background-image: url('https://images.unsplash.com/photo-1506157786151-b8491531f063?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80');
 }
@@ -72,5 +73,10 @@ export default {
 }
 .followers {
   font-size: 12px;
+}
+@media screen and (min-width: 64em) {
+  .artist__infos {
+    grid-area: infos;
+  }
 }
 </style>

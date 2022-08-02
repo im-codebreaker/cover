@@ -20,7 +20,6 @@ async function searchItems(name) {
       },
     }
   );
-
   return await response.json();
 }
 

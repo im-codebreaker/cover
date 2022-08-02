@@ -4,9 +4,23 @@ const store = createStore({
   state() {
     return {
       username: 'John Doe',
-      favoriteArtist: 'The Weeknd',
-      accessToken: sessionStorage.getItem('accessToken'),
+      currentSearch: 'The Weeknd',
     };
+  },
+  getters: {
+    getCurrentSearch(state) {
+      return state.currentSearch;
+    },
+  },
+  mutations: {
+    setCurrentSearch(state, payload) {
+      state.currentSearch = payload;
+    },
+  },
+  actions: {
+    setCurrentSearch(context, name) {
+      context.commit('setCurrentSearch', name);
+    },
   },
 });
 
