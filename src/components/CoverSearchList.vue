@@ -34,12 +34,12 @@
 import CoverTags from './ui/CoverTags.vue';
 export default {
   name: 'CoverSearchList',
+  components: { CoverTags },
   props: {
     artistsList: {
       type: Array,
     },
   },
-  components: { CoverTags },
 };
 </script>
 <style>
@@ -47,7 +47,6 @@ export default {
   display: grid;
   grid-template-columns: 1fr;
   gap: 2.5rem;
-  margin-block: 6.25rem;
 }
 .list__item-title {
   font-size: 0.875rem;

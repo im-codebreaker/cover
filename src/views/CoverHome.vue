@@ -1,19 +1,15 @@
 <template>
-  <main class="main">
-    <section class="section__result container">
-      <div class="hello">
+  <main>
+    <section class="section__home container">
+      <div class="section__home-hero">
         <h1>Welcome on _Cover</h1>
         <p
-          >Try _Cover to search and discover many music Artists, try the search
-          engine to display Albums and Top Tracks</p
+          >With _Cover you can search for your favorite music artist, display
+          discography and top tracks. Try now</p
         >
       </div>
-      <div class="result__container">
-        <CoverSearchBar
-          :fetch-artist="fetchArtist"
-          :filter-by-follower="filterByFollower"
-          :filter-by-popularity="filterByPopularity"
-        />
+      <div class="section__home-result">
+        <CoverSearchBar :fetch-artist="fetchArtist" :filter-by="filterBy" />
         <CoverSearchList :artists-list="artistsList" />
       </div>
     </section>
@@ -43,15 +39,21 @@ export default {
         this.$store.dispatch('setCurrentSearch', name);
       }
     },
-    filterByFollower() {
-      this.artistsList = this.artistsList.sort(function (a, b) {
-        return b.followers.total - a.followers.total;
-      });
-    },
-    filterByPopularity() {
-      this.artistsList = this.artistsList.sort(function (a, b) {
-        return b.popularity - a.popularity;
-      });
+    filterBy(event) {
+      switch (event.target.value) {
+        case 'Followers':
+          this.artistsList = this.artistsList.sort(function (a, b) {
+            return b.followers.total - a.followers.total;
+          });
+          break;
+        case 'Popularity':
+          this.artistsList = this.artistsList.sort(function (a, b) {
+            return b.popularity - a.popularity;
+          });
+          break;
+        default:
+          return;
+      }
     },
   },
   async mounted() {
@@ -63,17 +65,43 @@ export default {
 </script>
 
 <style>
-.container {
-  width: 90%;
-  margin: auto;
-  max-width: 1320px;
+.section__home {
+  padding-top: 6.25rem;
 }
-.main {
-  margin-top: 120px;
-}
-.hello {
-  padding: 40px;
-  background-color: #12121228;
+.section__home-hero {
+  padding: 2.5rem;
+  background-color: rgba(0, 0, 0, 0.25);
   border-radius: 8px;
+}
+.section__home-hero h1 {
+  font-family: 'Play', sans-serif;
+  font-size: clamp(1rem, 3vw + 0.5rem, 3rem);
+}
+.section__home-hero p {
+  max-width: 60ch;
+}
+.section__home-result {
+  margin-block: 6.25rem;
+}
+@media screen and (min-width: 57.5em) {
+  .section__home-hero {
+    position: relative;
+    overflow: hidden;
+  }
+  .section__home-hero::before {
+    content: '';
+    position: absolute;
+    width: 400px;
+    height: 400px;
+    top: -100px;
+    right: 0;
+    background: transparent url(../assets/headphones.png) center center
+      no-repeat;
+  }
+}
+@media screen and (min-width: 64em) {
+  .section__home-hero p {
+    font-size: 1rem;
+  }
 }
 </style>

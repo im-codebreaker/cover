@@ -30,9 +30,23 @@
 
 <script>
 import CoverListHeader from './ui/CoverListHeader.vue';
+
 export default {
   name: 'ArtistAlbums',
   components: { CoverListHeader },
+  data() {
+    return {
+      settings: {
+        dots: true,
+        dotsClass: 'slick-dots custom-dot-class',
+        edgeFriction: 0.35,
+        infinite: false,
+        speed: 500,
+        slidesToShow: 1,
+        slidesToScroll: 1,
+      },
+    };
+  },
   props: {
     artistAlbums: Object,
   },
@@ -43,7 +57,7 @@ export default {
 .albums__list {
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+  gap: 2rem;
 }
 .albums__list-item {
   display: flex;
@@ -57,13 +71,13 @@ export default {
 .list__header.albums {
   background-image: url('https://images.unsplash.com/photo-1539375665275-f9de415ef9ac?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Njl8fG11c2ljfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60');
 }
-@media screen and (min-width: 64em) {
+@media screen and (min-width: 57.5em) {
   .artist__albums {
     grid-area: albums;
   }
   .albums__list {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr;
   }
 }
 </style>

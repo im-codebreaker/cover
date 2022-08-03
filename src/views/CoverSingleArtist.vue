@@ -1,6 +1,6 @@
 <template>
-  <main class="main">
-    <aside>
+  <main>
+    <aside class="container">
       <CoverButtonLink href="/" icon="arrow-go-back" size="small"
         >Go back</CoverButtonLink
       >
@@ -44,13 +44,25 @@ export default {
 </script>
 
 <style>
+.section__artist {
+  padding-top: 6.25rem;
+}
 .list__item-title {
   font-weight: 600;
 }
 .list__item-details {
   font-size: 0.75rem;
 }
-@media screen and (min-width: 64em) {
+@media screen and (min-width: 57.5em) {
+  .section__artist {
+    display: grid;
+    grid-template-areas:
+      'infos infos'
+      'albums tracks';
+    gap: 40px;
+  }
+}
+@media screen and (min-width: 90em) {
   .section__artist {
     display: grid;
     grid-template-areas:

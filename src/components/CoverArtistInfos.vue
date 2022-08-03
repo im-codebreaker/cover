@@ -74,7 +74,7 @@ export default {
 .followers {
   font-size: 12px;
 }
-@media screen and (min-width: 64em) {
+@media screen and (min-width: 57.5em) {
   .artist__infos {
     grid-area: infos;
   }

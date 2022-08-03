@@ -12,17 +12,15 @@
     </div>
 
     <div class="result__topbar-filter">
-      <CoverButtonIcon @click="filterByFollower" icon="user" type="fill">
-        Most Followed
-      </CoverButtonIcon>
-      <CoverButtonIcon
-        @click="filterByPopularity"
-        icon="star"
-        className="yolo"
-        type="fill"
+      <label for="filter-select"
+        ><i class="ri-filter-3-line"></i> Filter by</label
       >
-        Most Popular
-      </CoverButtonIcon>
+      <CoverSelect
+        id="filter-select"
+        v-model="selected"
+        @change="filterBy($event)"
+        :options="['Followers', 'Popularity']"
+      />
     </div>
   </div>
 </template>
@@ -30,63 +28,51 @@
 <script>
 import CoverButtonIcon from './ui/CoverButtonIcon.vue';
 import CoverInput from './ui/CoverInput.vue';
+import CoverSelect from './ui/CoverSelect.vue';
 export default {
   name: 'CoverSearchBar',
   components: {
     CoverButtonIcon,
     CoverInput,
-  },
-  data() {
-    return {
-      inputSearch: '',
-    };
+    CoverSelect,
   },
   props: {
     fetchArtist: {
       type: Function,
     },
-    filterByFollower: {
+    filterBy: {
       type: Function,
     },
-    filterByPopularity: {
-      type: Function,
-    },
+  },
+  data() {
+    return {
+      inputSearch: '',
+      selected: '',
+    };
   },
 };
 </script>
 
 <style>
-.result__topbar,
+.result__topbar {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
 .result__topbar-search,
 .result__topbar-filter {
   display: flex;
-}
-.result__topbar {
-  flex-direction: column;
+  flex-direction: row;
   gap: 1rem;
 }
-.result__topbar-search,
 .result__topbar-filter {
-  justify-content: space-between;
-}
-@media screen and (min-width: 28.75em) {
-  .result__topbar-search {
-    gap: 1rem;
-    justify-content: flex-start;
-  }
-
-  .result__topbar-filter {
-    gap: 1rem;
-    justify-content: flex-end;
-  }
+  justify-content: flex-end;
 }
 @media screen and (min-width: 45em) {
   .result__topbar {
     flex-direction: row;
-  }
-  .result__topbar-search,
-  .result__topbar-filter {
-    flex: 1;
+    justify-content: space-between;
   }
 }
 </style>

@@ -35,7 +35,7 @@ export default {
 .list__header.tracks {
   background-image: url('https://images.unsplash.com/photo-1594623930572-300a3011d9ae?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80');
 }
-@media screen and (min-width: 64em) {
+@media screen and (min-width: 57.5em) {
   .artist__tracks {
     grid-area: tracks;
   }

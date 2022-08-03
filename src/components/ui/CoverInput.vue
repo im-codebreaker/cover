@@ -37,17 +37,18 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 .input {
   color: #fff;
   caret-color: #fff;
-  padding: 0.25rem 1rem;
+  padding: 0.25rem;
   outline: none;
   border: 1px solid #fff;
   border-radius: var(--border-rounded);
   background-color: transparent;
 }
 .input::placeholder {
+  padding-left: 0.75rem;
   color: rgba(255, 255, 255, 0.589);
   font-size: 0.875rem;
 }

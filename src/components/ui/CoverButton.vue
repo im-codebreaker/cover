@@ -33,7 +33,7 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 .btn {
   cursor: pointer;
   padding: 0.25rem 1rem;

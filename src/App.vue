@@ -53,6 +53,11 @@ a {
   cursor: pointer;
   text-decoration: none;
 }
+.container {
+  width: 90%;
+  margin: auto;
+  max-width: 1320px;
+}
 .cover {
   border-radius: var(--border-radius);
 }
