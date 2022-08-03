@@ -26,24 +26,32 @@ export default {
 
 <style>
 :root {
-  --border-radius: 8px;
-  --border-rounded: 100px;
+  --primary: #473956;
+  --primary-lighter: #6f5a87;
+  --primary-darker: #282030;
+  --alpha-dark: rgba(0, 0, 0, 0.25);
   --spotify-green: #1db954;
   --spotify-white: #fff;
   --spotify-black: #191414;
+  --border-radius: 8px;
+  --border-rounded: 100px;
   --cubic-bezier: cubic-bezier(0.53, 0.45, 0.26, 1.02);
 }
 ::-webkit-scrollbar {
   width: 8px;
-  background-color: #282030;
+  background-color: var(--primary-darker);
 }
 ::-webkit-scrollbar-thumb {
-  background: #6f4599;
+  background: var(--primary-lighter);
 }
 body {
   font-family: 'Open Sans', sans-serif;
   color: #f4f4f6;
-  background: #282030 url(./assets/background.png) center center fixed no-repeat;
+  background: var(--primary-darker) url(./assets/background.png) center center
+    fixed no-repeat;
+}
+main {
+  padding-block: 4rem;
 }
 ul,
 ol {

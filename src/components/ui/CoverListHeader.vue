@@ -20,10 +20,11 @@ export default {
 };
 </script>
 
-<style scoped>
+<style>
 .list__header {
   position: relative;
   padding: 2rem;
+  margin-bottom: 2rem;
   text-align: center;
   background-size: cover;
   background-position: center;
@@ -43,10 +44,5 @@ export default {
 }
 .list__header > * {
   isolation: isolate;
-}
-@media screen and (min-width: 47.5em) {
-  .list__header {
-    padding: 4rem 0;
-  }
 }
 </style>

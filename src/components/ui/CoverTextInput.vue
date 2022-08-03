@@ -1,8 +1,8 @@
 <template>
   <input
+    type="text"
     class="input"
     :class="className"
-    :type="type"
     :placeholder="placeholder"
   />
 </template>
@@ -10,10 +10,10 @@
 <script>
 /**
  * Cover basic input
- * @displayName Cover Input
+ * @displayName Cover Text Input
  */
 export default {
-  name: 'CoverInput',
+  name: 'CoverTextInput',
   props: {
     /**
      * Value of additional css classes
@@ -26,18 +26,13 @@ export default {
     placeholder: {
       type: String,
       required: false,
-      default: 'placeholder',
-    },
-    type: {
-      type: String,
-      required: false,
-      default: 'text',
+      default: 'Placeholder',
     },
   },
 };
 </script>
 
-<style scoped>
+<style>
 .input {
   color: #fff;
   caret-color: #fff;

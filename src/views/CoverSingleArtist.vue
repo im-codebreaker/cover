@@ -45,30 +45,15 @@ export default {
 
 <style>
 .section__artist {
-  padding-top: 6.25rem;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
+  padding-top: 2rem;
 }
-.list__item-title {
-  font-weight: 600;
-}
-.list__item-details {
-  font-size: 0.75rem;
-}
-@media screen and (min-width: 57.5em) {
+@media screen and (min-width: 64em) {
   .section__artist {
-    display: grid;
-    grid-template-areas:
-      'infos infos'
-      'albums tracks';
-    gap: 40px;
-  }
-}
-@media screen and (min-width: 90em) {
-  .section__artist {
-    display: grid;
-    grid-template-areas:
-      'infos tracks'
-      'albums albums';
-    gap: 40px;
+    grid-template-areas: 'infos tracks' 'albums albums';
+    grid-template-columns: 360px auto;
   }
 }
 </style>

@@ -70,8 +70,8 @@ export default {
 }
 .section__home-hero {
   padding: 2.5rem;
-  background-color: rgba(0, 0, 0, 0.25);
-  border-radius: 8px;
+  background-color: var(--alpha-dark);
+  border-radius: var(--border-radius);
 }
 .section__home-hero h1 {
   font-family: 'Play', sans-serif;

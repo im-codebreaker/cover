@@ -21,10 +21,16 @@ export default {
       required: false,
       default: '',
     },
+    /**
+     * Values of the select options
+     */
     options: {
       type: Array,
       required: true,
     },
+    /**
+     * Value of placeholder for selected option
+     */
     placeholder: {
       type: String,
       required: false,
@@ -34,7 +40,7 @@ export default {
 };
 </script>
 
-<style scoped>
+<style>
 .select {
   appearance: none;
   cursor: pointer;

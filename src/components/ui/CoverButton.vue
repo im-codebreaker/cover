@@ -33,7 +33,7 @@ export default {
 };
 </script>
 
-<style scoped>
+<style>
 .btn {
   cursor: pointer;
   padding: 0.25rem 1rem;
@@ -41,10 +41,8 @@ export default {
   color: #f4f4f6;
   border: 1px solid #f4f4f6bb;
   outline-color: #f4f4f6;
-  background-color: #f4f4f66e;
-}
-.btn:hover {
-  background-color: #f4f4f6a8;
+  background-color: var(--alpha-dark);
+  box-shadow: 0 0 0 0 var(--primary-lighter);
 }
 .btn.small {
   font-size: 0.75rem;
@@ -54,5 +52,12 @@ export default {
 }
 .btn.large {
   font-size: 1rem;
+}
+@media (hover: hover) {
+  .btn:hover,
+  .btn:focus {
+    box-shadow: 0 0 0 1em transparent;
+    transition: box-shadow 500ms linear;
+  }
 }
 </style>

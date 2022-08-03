@@ -1,7 +1,7 @@
 <template>
   <div class="result__topbar">
     <div class="result__topbar-search">
-      <CoverInput
+      <CoverTextInput
         placeholder="Search for an Artist"
         :value="inputSearch"
         @input="(event) => (inputSearch = event.target.value)"
@@ -27,13 +27,13 @@
 
 <script>
 import CoverButtonIcon from './ui/CoverButtonIcon.vue';
-import CoverInput from './ui/CoverInput.vue';
+import CoverTextInput from './ui/CoverTextInput.vue';
 import CoverSelect from './ui/CoverSelect.vue';
 export default {
   name: 'CoverSearchBar',
   components: {
     CoverButtonIcon,
-    CoverInput,
+    CoverTextInput,
     CoverSelect,
   },
   props: {

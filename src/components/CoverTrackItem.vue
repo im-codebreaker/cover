@@ -62,9 +62,12 @@ export default {
   flex-direction: column;
   justify-content: center;
   gap: 0.5rem;
-  padding: 1rem;
+  padding: 0.5rem 1rem;
   border-radius: var(--border-radius);
   background-color: rgba(0, 0, 0, 0.25);
+}
+.item__details-wrapper h3 {
+  font-size: 0.875rem;
 }
 .list__item-details {
   display: flex;
@@ -72,12 +75,14 @@ export default {
   gap: 1rem;
 }
 .item__details-artists {
+  font-size: 0.75rem;
   font-style: italic;
 }
 .item__details-track {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  font-size: 0.75rem;
 }
 .btn-spotify {
   display: block;
@@ -89,8 +94,8 @@ export default {
   .track__list-item {
     flex-direction: row;
   }
-  .track__list-item .cover {
-    width: 64px;
+  .track__list-item img {
+    width: 48px;
   }
   .list__item-details {
     flex: 1;
@@ -98,9 +103,6 @@ export default {
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
-  }
-  .item__details-track > span {
-    margin-right: 10rem;
   }
 }
 </style>
