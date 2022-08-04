@@ -27,6 +27,7 @@ export default {
   data() {
     return {
       artistsList: [],
+      accessToken: '',
     };
   },
   methods: {
@@ -34,7 +35,7 @@ export default {
       if (name === '') {
         alert('Please enter an artist name before submit');
       } else {
-        const data = await searchItems(name);
+        const data = await searchItems(name, this.accessToken);
         this.artistsList = data.artists.items;
         this.$store.dispatch('setCurrentSearch', name);
       }
@@ -61,6 +62,7 @@ export default {
     const token = sessionStorage.getItem('accessToken');
     const data = await searchItems(currentSearch, token);
     this.artistsList = data.artists.items;
+    this.accessToken = token;
   },
 };
 </script>
