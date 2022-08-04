@@ -20,7 +20,10 @@ import CoverListHeader from './ui/CoverListHeader.vue';
 export default {
   name: 'CoverArtistTopTracks',
   props: {
-    artistTopTracks: Object,
+    artistTopTracks: {
+      type: Object,
+      required: true,
+    },
   },
   components: { CoverTrackItem, CoverListHeader },
 };

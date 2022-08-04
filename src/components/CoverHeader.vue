@@ -3,7 +3,7 @@
     <h1 class="logo">_Cover</h1>
     <div class="header_profile">
       <img class="avatar" src="../assets/avatar.png" />
-      <p>{{ $store.state.username }} 👋</p>
+      <p>{{ username }} <span class="handwaves">👋</span></p>
     </div>
   </header>
 </template>
@@ -11,6 +11,11 @@
 <script>
 export default {
   name: 'CoverHeader',
+  computed: {
+    username() {
+      return this.$store.getters.getUsername;
+    },
+  },
 };
 </script>
 
@@ -38,5 +43,21 @@ export default {
 .avatar {
   width: 32px;
   height: 32px;
+}
+.handwaves {
+  display: inline-block;
+  transform: rotate(-15deg);
+  -webkit-animation: smoothRotate 500ms ease-in 4 alternate;
+  animation: smoothRotate 500ms ease-in 4 alternate;
+}
+@-webkit-keyframes smoothRotate {
+  to {
+    transform: rotate(15deg);
+  }
+}
+@keyframes smoothRotate {
+  to {
+    transform: rotate(15deg);
+  }
 }
 </style>

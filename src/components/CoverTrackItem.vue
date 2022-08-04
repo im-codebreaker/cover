@@ -4,6 +4,7 @@
       class="cover"
       :src="track.album?.images[0].url"
       :alt="track.album?.name"
+      loading="lazy"
     />
     <div class="list__item-details">
       <div class="item__details-wrapper">
@@ -81,7 +82,7 @@ export default {
 .item__details-track {
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  gap: 1rem;
   font-size: 0.75rem;
 }
 .btn-spotify {

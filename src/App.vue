@@ -70,4 +70,7 @@ a {
 .cover {
   border-radius: var(--border-radius);
 }
+.bold {
+  font-weight: 600;
+}
 </style>

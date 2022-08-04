@@ -45,6 +45,14 @@ export default {
   border-radius: var(--border-rounded);
   background-color: transparent;
 }
+.input::-webkit-input-placeholder {
+  color: rgba(255, 255, 255, 0.589);
+  font-size: 0.875rem;
+}
+.input:-ms-input-placeholder {
+  color: rgba(255, 255, 255, 0.589);
+  font-size: 0.875rem;
+}
 .input::placeholder {
   color: rgba(255, 255, 255, 0.589);
   font-size: 0.875rem;

@@ -10,7 +10,7 @@
       >
     </div>
     <div class="list__item-image">
-      <img class="cover" :src="albums.images[0].url" />
+      <img class="cover" :src="albums.images[0].url" loading="lazy" />
     </div>
   </div>
 </template>

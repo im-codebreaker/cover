@@ -76,6 +76,7 @@ export default {
 }
 .list__item-image .cover {
   aspect-ratio: 1 / 1;
+  -o-object-fit: cover;
   object-fit: cover;
 }
 .list__item-image .legend {

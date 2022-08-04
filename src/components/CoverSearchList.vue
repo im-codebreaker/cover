@@ -29,7 +29,8 @@ export default {
   components: { CoverArtistItem },
   props: {
     artistsList: {
-      type: Array,
+      type: Object,
+      required: true,
     },
   },
 };

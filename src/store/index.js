@@ -8,6 +8,9 @@ const store = createStore({
     };
   },
   getters: {
+    getUsername(state) {
+      return state.username;
+    },
     getCurrentSearch(state) {
       return state.currentSearch;
     },

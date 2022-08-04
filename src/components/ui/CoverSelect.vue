@@ -42,6 +42,8 @@ export default {
 
 <style>
 .select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
   appearance: none;
   cursor: pointer;
   color: #fff;

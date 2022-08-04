@@ -35,7 +35,12 @@ import CoverListHeader from './ui/CoverListHeader.vue';
 export default {
   name: 'CoverAristInfos',
   components: { CoverTags, CoverListHeader },
-  props: ['artistInfos'],
+  props: {
+    artistInfos: {
+      type: Object,
+      required: true,
+    },
+  },
 };
 </script>
 

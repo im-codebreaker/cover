@@ -5,7 +5,7 @@
         <h1>Welcome on _Cover</h1>
         <p
           >With _Cover you can search for your favorite music artist, display
-          discography and top tracks. Try now</p
+          discography and top tracks. <span class="bold">Try it now!</span></p
         >
       </div>
       <div class="section__home-result">
@@ -58,7 +58,8 @@ export default {
   },
   async mounted() {
     const currentSearch = this.$store.getters.getCurrentSearch;
-    const data = await searchItems(currentSearch);
+    const token = sessionStorage.getItem('accessToken');
+    const data = await searchItems(currentSearch, token);
     this.artistsList = data.artists.items;
   },
 };

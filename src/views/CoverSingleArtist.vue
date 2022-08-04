@@ -35,10 +35,12 @@ export default {
       artistTopTracks: [],
     };
   },
-  async created() {
-    this.artistInfos = await getArtist(this.$route.params.id);
-    this.artistAlbums = await getAlbums(this.$route.params.id);
-    this.artistTopTracks = await getTopTracks(this.$route.params.id);
+  async mounted() {
+    const token = sessionStorage.getItem('accessToken');
+
+    this.artistInfos = await getArtist(this.$route.params.id, token);
+    this.artistAlbums = await getAlbums(this.$route.params.id, token);
+    this.artistTopTracks = await getTopTracks(this.$route.params.id, token);
   },
 };
 </script>
