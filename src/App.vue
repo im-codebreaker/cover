@@ -15,7 +15,7 @@ export default {
     CoverHeader,
     CoverFooter,
   },
-  async created() {
+  async mounted() {
     if (sessionStorage.getItem('accessToken') === null) {
       const token = await getAccessToken();
       sessionStorage.setItem('accessToken', token.access_token);
@@ -29,6 +29,7 @@ export default {
   --primary: #473956;
   --primary-lighter: #6f5a87;
   --primary-darker: #282030;
+  --light: #f4f4f6;
   --alpha-dark: rgba(0, 0, 0, 0.25);
   --spotify-green: #1db954;
   --spotify-white: #fff;
@@ -46,7 +47,7 @@ export default {
 }
 body {
   font-family: 'Open Sans', sans-serif;
-  color: #f4f4f6;
+  color: var(--light);
   background: var(--primary-darker) url(./assets/background.png) center center
     fixed no-repeat;
 }

@@ -6,13 +6,13 @@
       :key="artists.id"
     >
       <router-link :to="artists.id">
-        <CoverAlbumItem
+        <CoverArtistItem
           v-if="index === 0"
           :artist-name="artists.name"
           :cover="artists?.images[0]?.url"
           match
         />
-        <CoverAlbumItem
+        <CoverArtistItem
           v-else
           :artist-name="artists.name"
           :cover="artists?.images[0]?.url"
@@ -23,10 +23,10 @@
 </template>
 
 <script>
-import CoverAlbumItem from './CoverAlbumItem.vue';
+import CoverArtistItem from './CoverArtistItem.vue';
 export default {
   name: 'CoverSearchList',
-  components: { CoverAlbumItem },
+  components: { CoverArtistItem },
   props: {
     artistsList: {
       type: Array,

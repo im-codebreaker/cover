@@ -1,5 +1,5 @@
 <template>
-  <main>
+  <main class="container">
     <section class="section__home container">
       <div class="section__home-hero">
         <h1>Welcome on _Cover</h1>

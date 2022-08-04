@@ -23,6 +23,9 @@ export default {
       required: false,
       default: '',
     },
+    /**
+     * Value of the placeholder text
+     */
     placeholder: {
       type: String,
       required: false,
@@ -36,14 +39,13 @@ export default {
 .input {
   color: #fff;
   caret-color: #fff;
-  padding: 0.25rem;
+  padding: 0.25rem 0 0.25rem 0.75rem;
   outline: none;
   border: 1px solid #fff;
   border-radius: var(--border-rounded);
   background-color: transparent;
 }
 .input::placeholder {
-  padding-left: 0.75rem;
   color: rgba(255, 255, 255, 0.589);
   font-size: 0.875rem;
 }

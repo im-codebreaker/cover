@@ -64,7 +64,7 @@ export default {
   gap: 0.5rem;
   padding: 0.5rem 1rem;
   border-radius: var(--border-radius);
-  background-color: rgba(0, 0, 0, 0.25);
+  background-color: var(--alpha-dark);
 }
 .item__details-wrapper h3 {
   font-size: 0.875rem;

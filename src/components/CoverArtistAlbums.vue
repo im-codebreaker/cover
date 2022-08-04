@@ -9,20 +9,7 @@
         v-for="(albums, index) in artistAlbums?.items"
         :key="index"
       >
-        <div class="list__item-title">
-          <span>{{ albums.name }}</span>
-        </div>
-        <div class="list__item-details">
-          <p>
-            {{ albums.release_date.slice(0, 4) }} •
-            <span v-for="(artists, index) in albums.artists" :key="index">
-              {{ artists.name }}
-            </span></p
-          >
-        </div>
-        <div>
-          <img class="cover" :src="albums.images[0].url" />
-        </div>
+        <CoverAlbumItem :albums="albums" />
       </li>
     </ul>
   </div>
@@ -30,10 +17,11 @@
 
 <script>
 import CoverListHeader from './ui/CoverListHeader.vue';
+import CoverAlbumItem from './CoverAlbumItem.vue';
 
 export default {
   name: 'ArtistAlbums',
-  components: { CoverListHeader },
+  components: { CoverListHeader, CoverAlbumItem },
   props: {
     artistAlbums: Object,
   },
@@ -46,15 +34,7 @@ export default {
   grid-template-columns: 1fr;
   gap: 1.5rem;
 }
-.albums__list-item {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  gap: 0.5rem;
-  padding: 1rem;
-  border-radius: var(--border-radius);
-  background-color: rgba(0, 0, 0, 0.25);
-}
+
 .list__header.albums {
   background-image: url('https://images.unsplash.com/photo-1504904126298-3fde501c9b31?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80');
 }
