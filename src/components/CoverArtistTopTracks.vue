@@ -1,7 +1,7 @@
 <template>
   <div class="artist__tracks">
     <CoverListHeader className="tracks">
-      <h2><i class="ri-music-2-line"></i> Top Tracks </h2>
+      <h2>Top Tracks </h2>
     </CoverListHeader>
     <ul class="tracks__list">
       <CoverTrackItem

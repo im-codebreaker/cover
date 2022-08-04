@@ -25,7 +25,6 @@ export default {
   position: relative;
   padding: 2rem;
   margin-bottom: 2rem;
-  text-align: center;
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;

@@ -53,7 +53,7 @@ export default {
 @media screen and (min-width: 64em) {
   .section__artist {
     grid-template-areas: 'infos tracks' 'albums albums';
-    grid-template-columns: 360px auto;
+    grid-template-columns: 480px auto;
   }
 }
 </style>

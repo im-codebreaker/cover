@@ -1,7 +1,7 @@
 <template>
   <div class="artist__albums">
     <CoverListHeader className="albums">
-      <h2><i class="ri-album-fill"></i> Albums</h2>
+      <h2>Albums</h2>
     </CoverListHeader>
     <ul class="albums__list">
       <li
